@@ -34,7 +34,6 @@ This app is allows user to keep track of their own personal finances. This is do
 * Image recognition- Uses OCR (Optical Character Recognition) to parse text fields
 * Spending habit data visualization
 * User should switch between tabs- view spending habit report, view saved receipts and camera button to take photos
-* ...
 
 **Optional Nice-to-have Stories**
 
@@ -54,18 +53,23 @@ This app is allows user to keep track of their own personal finances. This is do
 
 **Tab Navigation** (Tab to Screen)
 
-* Receipts
-* [fill out your second tab]
-* [fill out your third tab]
+* View receipts (with small camera icon)
+* Capture new image
+* Profile/Settings
+* View report
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Login
+   * View receipts
+* View receipts
+   * List Receipts
+       * Individual receipt information
+   * Capture new receipt image
+* Profile
+    * User settings
+* Budget Report
+    * Graph/chat view
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
