@@ -1,6 +1,3 @@
-Original App Design Project - README Template
-===
-
 # Expense-Tracker-Android (temp)
 
 ## Table of Contents
@@ -27,6 +24,11 @@ This app will allow users to keep track of their own personal finances. This is 
 Sprint 1: Set up backend
 - [x] Deploy Parse server with Back4App
 - [x] Set up Parse Login
+
+Sprint 2: Image capture and text recognition
+- [ ] Use Parse API to get data from database
+- [ ] Capture and submit images 
+- [ ] Extract text from image programmatically 
 
 ### 1. User Stories (Required and Optional)
 
