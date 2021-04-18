@@ -25,6 +25,12 @@ Sprint 1: Set up backend
 - [x] Deploy Parse server with Back4App
 - [x] Set up Parse Login
 
+### Build Sprint 1
+
+<img src='sprint_1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
 Sprint 2: Image capture and text recognition
 - [ ] Use Parse API to get data from database
 - [ ] Capture and submit images 
@@ -106,11 +112,6 @@ Sprint 2: Image capture and text recognition
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-### Build Sprint 1
-
-<img src='sprint_1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ________________________
 
