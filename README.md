@@ -11,7 +11,7 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-This app is allows user to keep track of their own personal finances. This is done by taking pictures of receipts. Using text recognition, the app would analyze and extract transaction information from the receipt image. With this data, the user would be given various budgeting and financial information (i.e. charts, graphs, and statistics) to help visualize their spending habits.
+This app will allow users to keep track of their own personal finances. This is done by taking pictures of receipts. Using text recognition, the app would analyze and extract transaction information from the receipt image. With this data, the user would be given various budgeting and financial information (i.e. charts, graphs, and statistics) to help visualize their spending habits.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
@@ -23,6 +23,10 @@ This app is allows user to keep track of their own personal finances. This is do
 - **Scope:** 
 
 ## Product Spec
+
+Sprint 1: Set up backend
+- [x] Deploy Parse server with Back4App
+- [x] Set up Parse Login
 
 ### 1. User Stories (Required and Optional)
 
@@ -85,15 +89,14 @@ This app is allows user to keep track of their own personal finances. This is do
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| username | string | login username of the current user |
+| objectId | string | unique id for the user post (default field) |
 | password | string | password of current user |
-| name | string | current user's full name |
+| author | Pointer to User | image author |
 | receiptImage | image | image of receipt |
 | storeName | string | name of store where transaction was made |
-| storeType | string | type of store where transaction was made |
+| category | string | transaction category |
 | totalCost | double | total cost of transaction |
-| time | int | time of transaction |
-| date | int | date of transaction |
+| createdAt | DateTime | date when post is created (default field) |
 
 
 ### Networking
@@ -101,7 +104,11 @@ This app is allows user to keep track of their own personal finances. This is do
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
+### Build Sprint 1
 
+<img src='sprint-1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ________________________
 
