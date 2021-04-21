@@ -1,6 +1,12 @@
 package com.codepath.expensetracker;
 
+import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
-public class Post extends ParseObject {
+@ParseClassName("Post")
+public class Post extends ParseObject{
+
+
 }
