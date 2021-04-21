@@ -32,7 +32,7 @@ Sprint 1: Set up backend
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Sprint 2: Image capture and text recognition
-- [ ] Use Parse API to get data from database
+- [x] Use Parse API to get data from database
 - [ ] Capture and submit images 
 - [ ] Extract text from image programmatically 
 
