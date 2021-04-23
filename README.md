@@ -27,14 +27,19 @@ Sprint 1: Set up backend
 
 ### Build Sprint 1
 
-<img src='sprint_1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![](./sprint_1.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Sprint 2: Image capture and text recognition
 - [x] Use Parse API to get data from database
-- [ ] Capture and submit images 
-- [ ] Extract text from image programmatically 
+- [x] Image capture functionality
+- [ ] Can properly submit image to Parse
+- [ ] Extract text from image programmatically
+
+### Build Sprint 2
+
+![](./sprint_2.gif)
 
 ### 1. User Stories (Required and Optional)
 
