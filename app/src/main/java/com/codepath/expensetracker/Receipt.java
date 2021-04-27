@@ -5,7 +5,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-@ParseClassName("Post")
+@ParseClassName("Receipt")
 public class Receipt extends ParseObject{
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
