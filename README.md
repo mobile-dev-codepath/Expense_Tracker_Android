@@ -34,12 +34,21 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 Sprint 2: Image capture and text recognition
 - [x] Use Parse API to get data from database
 - [x] Image capture functionality
-- [ ] Can properly submit image to Parse
-- [ ] Extract text from image programmatically
+- [x] Can properly submit image to Parse
 
 ### Build Sprint 2
 
 ![](./sprint_2.gif)
+
+Sprint 3
+- [] Style the UI
+- [] Build out the app
+- [] Build the Parse backend
+- [] Add Firebase to project
+- [] Use Google's ML Kit Text Recognition APIs to process the images
+
+
+
 
 ### 1. User Stories (Required and Optional)
 
@@ -116,10 +125,3 @@ Sprint 2: Image capture and text recognition
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
-
-
-________________________
-
-Category: Finance, expense management  
-
-User stories:1.Image capture- capture images taken from the camera API2.Image recognition Use an OCR (Optical Character Recognition) library to parse the text from the image into usable data Use parsed receipt data to auto fill text fields (e.g. date, time, category (personal, business expense etc), restaurant/location,  payment) data structure- json? can edit receipt before saving/submitting 3.Data storage store images or just data? local storage- not ideal b/c can only access on that device cloud storage- icloud, AWS S3, dropbox, onedrive Backend-as-a-Service Parse Parse server- deploy to Back4app database- mongoDB GridStore adapter or AWS S3 adapter RESTful API Google Firebase Database- Cloud Firestore or Realtime Database migrate parse to firebase- query based on child/parent relations 4.Reporting/tracking do report from the server, track budget app/device consumes API to display data
