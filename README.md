@@ -41,11 +41,11 @@ Sprint 2: Image capture and text recognition
 ![](./sprint_2.gif)
 
 Sprint 3
-- [] Style the UI
-- [] Build out the app
-- [] Build the Parse backend
-- [] Add Firebase to project
-- [] Use Google's ML Kit Text Recognition APIs to process the images
+- [ ] Style the UI
+- [ ] Build out the app
+- [ ] Build the Parse backend
+- [ ] Add Firebase to project
+- [ ] Use Google's ML Kit Text Recognition APIs to process the images
 
 
 
