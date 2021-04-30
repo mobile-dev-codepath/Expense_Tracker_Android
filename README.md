@@ -102,6 +102,7 @@ Sprint 3
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
+<img src="BudgetApp.gif" width=300>
 
 ### [BONUS] Interactive Prototype
 
