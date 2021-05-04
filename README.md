@@ -25,10 +25,6 @@ Sprint 1: Set up backend
 - [x] Deploy Parse server with Back4App
 - [x] Set up Parse Login
 
-### Build Sprint 1
-
-![](./sprint_1.gif)
-
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Sprint 2: Image capture and text recognition
@@ -36,15 +32,12 @@ Sprint 2: Image capture and text recognition
 - [x] Image capture functionality
 - [x] Can properly submit image to Parse
 
-### Build Sprint 2
-
-![](./sprint_2.gif)
 
 Sprint 3
-- [ ] Style the UI
+- [x] Style the UI
 - [ ] Build out the app
-- [ ] Build the Parse backend
-- [ ] Add Firebase to project
+- [x] Build the Parse backend
+- [x] Add Firebase to project
 - [ ] Use Google's ML Kit Text Recognition APIs to process the images
 
 
@@ -126,3 +119,11 @@ Sprint 3
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+### Build Sprint 1
+
+![](./sprint_1.gif)
+
+### Build Sprint 2
+
+![](./sprint_2.gif)
