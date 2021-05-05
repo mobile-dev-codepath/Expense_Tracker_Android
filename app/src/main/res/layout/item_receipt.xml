@@ -1,38 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/receiptContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_margin="20dp">
+
+    <ImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvStoreName"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:layout_toStartOf="@+id/tvTransactionCost"
+
+        android:layout_weight="1"
+        android:text="Store Name" />
+
+    <TextView
+        android:id="@+id/tvTransactionCost"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/tvTransactionDate"
+        android:gravity="center"
+        android:text="Transaction Cost" />
+
+    <TextView
+        android:id="@+id/tvTransactionDate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="Transaction Date" />
 
     <TextView
         android:id="@+id/tvUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_weight="1"
-        android:text="username"
-        android:textSize="30sp" />
-
-    <ImageView
-        android:id="@+id/ivImage"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_below="@+id/tvUsername"
-        android:layout_alignParentStart="true"
-        android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:textSize="30sp"
+        android:visibility="gone" />
 
     <TextView
-        android:id="@+id/tvDescription"
+        android:id="@+id/tvStoreType"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_below="@+id/ivImage"
-        android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:text="description" />
+        android:text="Store Type"
+        android:visibility="gone"/>
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/imgbtnProfilePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvJoinDate"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Join Date"
+        android:visibility="gone" />
+
+</RelativeLayout>

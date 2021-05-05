@@ -20,56 +20,35 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codepath.expensetracker.MainActivity;
 import com.codepath.expensetracker.Receipt;
 import com.codepath.expensetracker.R;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
-
-class BitmapScaler
-{
-    // Scale and maintain aspect ratio given a desired width
-    // BitmapScalar.scaleToFitWidth(bitmap, 100);
-    public static Bitmap scaleToFitWidth(Bitmap b, int width)
-    {
-        float factor = width / (float) b.getWidth();
-        return Bitmap.createScaledBitmap(b, width, (int) (b.getHeight() * factor), true);
-    }
-
-
-    // Scale and maintain aspect ratio given a desired height
-    // BitmapScaler.scaleToFitHeight(bitmap, 100);
-    public static Bitmap scaleToFitHeight(Bitmap b, int height)
-    {
-        float factor = height / (float) b.getHeight();
-        return Bitmap.createScaledBitmap(b, (int) (b.getWidth() * factor), height, true);
-    }
-
-    // ...
-}
 
 public class ComposeFragment extends Fragment {
 
     public static final String TAG = "ComposeFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public static final int IMAGE_WIDTH = 200;
-    private EditText etDescription;
+    private EditText etStoreName;
+    private Spinner spnrStoreType;
+    private EditText etTransactionCost;
+    private EditText etTransactionDate;
     private Button btnCaptureImage;
     private ImageView ivReceiptImage;
     private Button btnSubmit;
     private File photoFile;
-    private String photoFileName = "photo.jpg";
+    private String photoFileName = "receipt.jpg";
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -86,7 +65,10 @@ public class ComposeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        etDescription = view.findViewById(R.id.etDescription);
+        etStoreName = view.findViewById(R.id.etStoreName);
+        spnrStoreType = view.findViewById(R.id.spnrStoreType);
+        etTransactionCost = view.findViewById(R.id.etTransactionCost);
+        etTransactionDate = view.findViewById(R.id.etTransactionDate);
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivReceiptImage = view.findViewById(R.id.ivReceiptImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
@@ -101,9 +83,24 @@ public class ComposeFragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String description = etDescription.getText().toString();
-                if (description.isEmpty()) {
-                    Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
+                String storeName = etStoreName.getText().toString();
+                String storeType = spnrStoreType.getSelectedItem().toString();
+                String transactionCost = etTransactionCost.getText().toString();
+                String transactionDate = etTransactionDate.getText().toString();
+                if (storeName.isEmpty()) {
+                    Toast.makeText(getContext(), "Store name cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (storeType.isEmpty()) {
+                    Toast.makeText(getContext(), "Store type cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (transactionCost.isEmpty()) {
+                    Toast.makeText(getContext(), "Transaction cost cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (transactionDate.isEmpty()) {
+                    Toast.makeText(getContext(), "Transaction date cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (photoFile == null || ivReceiptImage.getDrawable() == null) {
@@ -111,7 +108,7 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                saveReceipt(description, currentUser, photoFile);
+                saveReceipt(storeName, storeType, transactionCost, transactionDate, currentUser, photoFile);
 
             }
         });
@@ -173,9 +170,12 @@ public class ComposeFragment extends Fragment {
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    private void saveReceipt(String description, ParseUser currentUser, File photoFile) {
+    private void saveReceipt(String storeName, String storeType, String transactionCost, String transactionDate, ParseUser currentUser, File photoFile) {
         Receipt receipt = new Receipt();
-        receipt.setDescription(description);
+        receipt.setStoreName(storeName);
+        receipt.setStoreType(storeType);
+        receipt.setTransactionCost(transactionCost);
+        receipt.setTransactionDate(transactionDate);
         receipt.setImage(new ParseFile(photoFile));
         receipt.setUser(currentUser);
         receipt.saveInBackground(new SaveCallback() {
@@ -183,11 +183,12 @@ public class ComposeFragment extends Fragment {
             public void done(ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "Error while saving", e);
-                    Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please enter all required data", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Log.i(TAG, "Receipt save was successful!");
-                etDescription.setText("");
+                etStoreName.setText("");
+                
                 ivReceiptImage.setImageResource(0);
             }
         });

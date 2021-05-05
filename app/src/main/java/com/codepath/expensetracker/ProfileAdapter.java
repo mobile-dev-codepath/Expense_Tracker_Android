@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,7 +20,7 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
-public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHolder> {
+public class ProfileAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHolder> {
 
     private Context context;
     private List<Receipt> receipts;
@@ -33,13 +32,13 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReceiptsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_receipt, parent, false);
-        return new ViewHolder(view);
+        return new ReceiptsAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ReceiptsAdapter.ViewHolder holder, int position) {
         Receipt receipt = receipts.get(position);
         holder.bind(receipt);
     }
@@ -64,8 +63,6 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder {
 
         RelativeLayout receiptContainer;
-        private ImageButton imgbtnProfilePicture;
-        private TextView tvJoinDate;
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvStoreName;
@@ -75,8 +72,6 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgbtnProfilePicture = itemView.findViewById(R.id.imgbtnProfilePicture);
-            tvJoinDate = itemView.findViewById(R.id.tvJoinDate);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvStoreName = itemView.findViewById(R.id.tvStoreName);
@@ -98,14 +93,14 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
                 Glide.with(context).load(receipt.getImage().getUrl()).into(ivImage);
             }
 
-             receiptContainer.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     Intent i = new Intent(context, ViewReceipt.class);
-                     i.putExtra("receipt", Parcels.wrap(receipt);
-                     context.startActivity(i);
-                 }
-             });
+            receiptContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, ViewReceipt.class);
+                    i.putExtra("receipt", Parcels.wrap(receipt);
+                    context.startActivity(i);
+                }
+            });
 
 
         }

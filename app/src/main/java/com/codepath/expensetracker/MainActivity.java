@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_home:
                         fragment = new ReceiptsFragment();
                         break;
-                    case R.id.action_compose:
-                        fragment = new ComposeFragment();
-                        break;
                     case R.id.action_profile:
                     default:
                         fragment = new ProfileFragment();

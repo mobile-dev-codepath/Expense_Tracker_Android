@@ -5,18 +5,22 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.codepath.expensetracker.Receipt;
 import com.codepath.expensetracker.ReceiptsAdapter;
 import com.codepath.expensetracker.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -34,6 +38,8 @@ public class ReceiptsFragment extends Fragment {
     protected ReceiptsAdapter adapter;
     protected List<Receipt> allReceipts;
     private SwipeRefreshLayout swipeContainer;
+    private FloatingActionButton fabAddReceipt;
+    public FragmentManager fragmentManager;
 
     public ReceiptsFragment() {
         // Required empty public constructor
@@ -76,6 +82,16 @@ public class ReceiptsFragment extends Fragment {
         // 4. set the layout manager on the recycler view
         rvReceipts.setLayoutManager(new LinearLayoutManager(getContext()));
         queryReceipts();
+
+        fabAddReceipt = view.findViewById(R.id.fabAddReceipt);
+        fabAddReceipt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new ComposeFragment();
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+            }
+        });
+        fragmentManager.beginTransaction().replace(R.id.flContainer, (new ReceiptsFragment())).commit();
     }
 
     protected void queryReceipts() {
@@ -91,7 +107,7 @@ public class ReceiptsFragment extends Fragment {
                     return;
                 }
                 for (Receipt receipt : receipts) {
-                    Log.i(TAG, "Receipt: " + receipt.getDescription() + ", username: " + receipt.getUser().getUsername());
+                    Log.i(TAG, "Store name: " + receipt.getStoreName() + ", store type: " + receipt.getStoreType() + ", transaction cost: " + receipt.getTransactionCost() + ", transaction date: " + receipt.getTransactionDate() + ", username: " + receipt.getUser().getUsername());
                 }
                 adapter.clear();
                 adapter.addAll(receipts);

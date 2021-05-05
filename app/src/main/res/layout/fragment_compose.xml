@@ -3,21 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="30dp"
     android:orientation="vertical"
     tools:context=".fragments.ComposeFragment">
-
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/enterDescription" />
-
-    <Button
-        android:id="@+id/btnCaptureImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/takePicture" />
 
     <ImageView
         android:id="@+id/ivReceiptImage"
@@ -25,6 +13,41 @@
         android:layout_height="200dp"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <Button
+        android:id="@+id/btnCaptureImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/takePicture" />
+
+    <Spinner
+        android:id="@+id/spnrStoreType"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:hint="Store Type"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/etStoreName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/storeName" />
+
+    <EditText
+        android:id="@+id/etTransactionCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/transactionCost" />
+
+    <EditText
+        android:id="@+id/etTransactionDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/transactionDate" />
+    
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
