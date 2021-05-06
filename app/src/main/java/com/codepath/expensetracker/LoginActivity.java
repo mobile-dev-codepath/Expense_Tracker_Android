@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private ImageButton imgbtnProfilePicture;
     private File photoFile;
-    private String photoFileName = "profilePicture.pg";
+    private String photoFileName = "profilePicture.png";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference for future access
-        photoFile = getPhotoFileUri(photoFileName));;
+        photoFile = getPhotoFileUri(photoFileName);
 
         // wrap File object into a content provider
         // required for API >= 24

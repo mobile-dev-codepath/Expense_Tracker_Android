@@ -26,6 +26,8 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import static android.app.Activity.RESULT_OK;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -34,8 +36,12 @@ import java.util.List;
 public class ProfileFragment extends ReceiptsFragment {
 
     public static final String TAG = "ProfileFragment";
+    public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
+    public static final int IMAGE_WIDTH = 200;
     public ImageButton imgbtnProfilePicture;
-    public tvJoinDate;
+    public TextView tvJoinDate;
+    public File photoFile;
+    public String photoFileName = "profilePicture.png";
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,17 +59,17 @@ public class ProfileFragment extends ReceiptsFragment {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference for future access
-        photoFile = getPhotoFileUri(photoFileName));;
+        photoFile = getPhotoFileUri(photoFileName);
 
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(this, "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
         // So as long as the result is not null, it's safe to use the intent.
-        if (intent.resolveActivity(this.getPackageManager()) != null) {
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
@@ -83,7 +89,7 @@ public class ProfileFragment extends ReceiptsFragment {
                 // Load the taken image into a preview
                 imgbtnProfilePicture.setImageBitmap(resizedBitmap);
             } else { // Result was a failure
-                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -92,7 +98,7 @@ public class ProfileFragment extends ReceiptsFragment {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
         // This way, we don't need to request external read/write runtime permissions.
-        File mediaStorageDir = new File(this.getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
+        File mediaStorageDir = new File(getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
@@ -119,7 +125,7 @@ public class ProfileFragment extends ReceiptsFragment {
                     return;
                 }
                 for (Receipt receipt : receipts) {
-                    Log.i(TAG, "Receipt: " + receipt.getDescription() + ", username: " + receipt.getUser().getUsername());
+                    Log.i(TAG, "Store name: " + receipt.getStoreName() + ", store type: " + receipt.getStoreType() + ", transaction cost: " + receipt.getTransactionCost() + ", transaction date: " + receipt.getTransactionDate() + ", username: " + receipt.getUser().getUsername());
                 }
                 allReceipts.addAll(receipts);
                 adapter.notifyDataSetChanged();

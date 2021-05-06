@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.parceler.Parcel;
 import org.parceler.Parcels;
 
 import androidx.annotation.NonNull;

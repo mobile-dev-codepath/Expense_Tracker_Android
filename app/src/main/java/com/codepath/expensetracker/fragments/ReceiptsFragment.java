@@ -26,10 +26,10 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 
 import org.jetbrains.annotations.NotNull;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class ReceiptsFragment extends Fragment {
 

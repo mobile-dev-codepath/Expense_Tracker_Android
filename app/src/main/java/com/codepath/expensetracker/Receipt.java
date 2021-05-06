@@ -9,7 +9,6 @@ import org.parceler.Parcel;
 
 import java.util.Date;
 
-@Parcel
 @ParseClassName("Receipt")
 public class Receipt extends ParseObject{
     public static final String KEY_STORE_NAME = "storeName";

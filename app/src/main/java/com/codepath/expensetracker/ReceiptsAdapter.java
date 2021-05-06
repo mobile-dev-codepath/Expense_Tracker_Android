@@ -2,6 +2,9 @@ package com.codepath.expensetracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +17,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.expensetracker.fragments.BitmapScaler;
 import com.codepath.expensetracker.fragments.ViewReceipt;
 import com.parse.ParseFile;
 
+import org.parceler.Parcel;
 import org.parceler.Parcels;
 
+import java.io.File;
 import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHolder> {
 
+    public static final int IMAGE_WIDTH = 200;
     private Context context;
     private List<Receipt> receipts;
 
@@ -64,8 +73,6 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder {
 
         RelativeLayout receiptContainer;
-        private ImageButton imgbtnProfilePicture;
-        private TextView tvJoinDate;
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvStoreName;
@@ -75,8 +82,6 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgbtnProfilePicture = itemView.findViewById(R.id.imgbtnProfilePicture);
-            tvJoinDate = itemView.findViewById(R.id.tvJoinDate);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvStoreName = itemView.findViewById(R.id.tvStoreName);
@@ -87,7 +92,7 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
         }
 
         public void bind(Receipt receipt) {
-            // Bind the data to the view elements
+
             tvStoreName.setText(receipt.getStoreName());
             tvStoreType.setText(receipt.getStoreName());
             tvTransactionCost.setText(receipt.getTransactionCost());
@@ -102,7 +107,7 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
                  @Override
                  public void onClick(View v) {
                      Intent i = new Intent(context, ViewReceipt.class);
-                     i.putExtra("receipt", Parcels.wrap(receipt);
+                     i.putExtra("receipt", Parcels.wrap(receipt));
                      context.startActivity(i);
                  }
              });
@@ -110,4 +115,5 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<ReceiptsAdapter.ViewHo
 
         }
     }
+
 }
