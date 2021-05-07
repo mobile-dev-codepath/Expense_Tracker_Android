@@ -38,7 +38,10 @@ Sprint 3
 - [ ] Build out the app
 - [x] Build the Parse backend
 - [x] Add Firebase to project
-- [ ] Use Google's ML Kit Text Recognition APIs to process the images
+
+Sprint 4
+- [ ] Rebuild app
+- [x] Use Google's ML Kit Text Recognition APIs to process the images
 
 
 
@@ -127,3 +130,8 @@ Sprint 3
 ### Build Sprint 2
 
 ![](./sprint_2.gif)
+
+### Build Sprint 4
+
+![](./sprint_4.gif)
+
